@@ -46,5 +46,27 @@ namespace RyskTech.Forms.Unit.Controls
         {
             // nil
         }
+
+        public void writeMethodology(System.IO.FileStream fs)
+        {
+            UnitMainForm.AddText(fs, "<Methodology>\n");
+            UnitMainForm.AddText(fs, MethodologyTextBox.Text.Replace("\r\n", "◄"));
+            UnitMainForm.AddText(fs, "\n<\\Methodology>");
+        }
+
+        public void loadMethodology(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<Methodology>");
+                line = sr.ReadLine();
+                MethodologyTextBox.Text = line.Replace("◄", "\r\n");
+                sr.Close();
+            }
+
+        }
+
+       
     }
 }

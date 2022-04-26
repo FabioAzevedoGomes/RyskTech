@@ -226,5 +226,194 @@ namespace RyskTech.Forms.Lab.Controls
             else
                 throw new ApplicationException(Resources.Language.pt_local.NotAllTabsVisited);
         }
+
+
+        public void writeSafetyInfo(System.IO.FileStream fs)
+        {
+            LabMainForm.AddText(fs, "<labSafetyInfo>\n");
+            if (glassesCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "óculos,");
+            if (concreteWallCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "auricular,");
+            if (glovesCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "luvas,");
+            if (doserCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "dosímetro,");
+            if (dustProcetorCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "guarda-pó");
+            LabMainForm.AddText(fs, "\n");
+            if (maskCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "máscaras:" + masksEPITextBox.Text + "\n");
+            if (otherEPICheckBox.Checked == true)
+                LabMainForm.AddText(fs, "outros:" + otherEPITextBox.Text + "\n");
+            if (sandobxCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "caixa de areia,");
+            if (vermiculitaCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "vermiculita,");
+            if (calboxCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "cal,");
+            if (shovelCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "pá,");
+            if (chapelCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "capela,");
+            if (exhaustCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "exaustor");
+            LabMainForm.AddText(fs, "\n");
+            if (otherEPCCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "outros:" + otherEPCTextBox.Text + "\n");
+            if (noEmergentyBoxCheckBox.Checked == true)
+                LabMainForm.AddText(fs, "sem segurança\n");
+            else if (noEmergentyBoxCheckBox.Checked == false)
+            {
+                if (microporeTapeCheckBox.Checked == true)
+                    LabMainForm.AddText(fs, "microporo ");
+                if (gazeCheckBox.Checked == true)
+                    LabMainForm.AddText(fs, "gaze ");
+                if (scisorsCheckBox.Checked == true)
+                    LabMainForm.AddText(fs, "tesouras ");
+                if (waterCheckBox.Checked == true)
+                    LabMainForm.AddText(fs, "água");
+                LabMainForm.AddText(fs, "\n");
+                if (otherFirstAidCheckBox.Checked == true)
+                    LabMainForm.AddText(fs, "outros:" + otherFirstAidTextBox.Text + "\n");
+            }
+            if (yesRadioButton.Checked == true)
+            {
+                LabMainForm.AddText(fs, "segurança\n");
+                LabMainForm.AddText(fs, numericUpDown1.Value.ToString() + " ");
+                if (daysRadioButton.Checked == true)
+                    LabMainForm.AddText(fs, "dias\n");
+                if (monthsRadioButton.Checked == true)
+                    LabMainForm.AddText(fs, "meses\n");
+                if (yearsRadioButton.Checked == true)
+                    LabMainForm.AddText(fs, "anos\n");
+                if (weeksRadioButton.Checked == true)
+                    LabMainForm.AddText(fs, "semanas\n");
+
+                LabMainForm.AddText(fs, textBox1.Text + "\n");
+                LabMainForm.AddText(fs, "<\\labSafetyInfo>\n");
+            }
+            else
+            {
+                LabMainForm.AddText(fs, "sem segurança\n");
+                LabMainForm.AddText(fs, "<\\labSafetyInfo>\n");
+            }
+
+        }
+
+        public void loadSafetyInfo(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<labSafetyInfo>");
+                line = sr.ReadLine();
+                if (line.Contains("óculos"))
+                    glassesCheckBox.Checked = true;
+                if (line.Contains("auricular"))
+                    concreteWallCheckBox.Checked = true;
+                if (line.Contains("luvas"))
+                    glovesCheckBox.Checked = true;
+                if (line.Contains("dosímetro"))
+                    doserCheckBox.Checked = true;
+                if (line.Contains("guarda-pó"))
+                    dustProcetorCheckBox.Checked = true;
+                line = sr.ReadLine();
+                if (line.Contains("máscaras"))
+                {
+                    maskCheckBox.Checked = true;
+                    string[] field = line.Split(':');
+                    masksEPITextBox.Text = field[1];
+                    line = sr.ReadLine();
+                }
+                if (line.Contains("outros"))
+                {
+                    otherEPICheckBox.Checked = true;
+                    string[] field = line.Split(':');
+                    otherEPITextBox.Text = field[1];
+                    line = sr.ReadLine();
+                }
+                if (line.Contains("caixa de areia"))
+                    sandobxCheckBox.Checked = true;
+                if (line.Contains("vermiculita"))
+                    vermiculitaCheckBox.Checked = true;
+                if (line.Contains("cal"))
+                    calboxCheckBox.Checked = true;
+                if (line.Contains("pá"))
+                    shovelCheckBox.Checked = true;
+                if (line.Contains("capela"))
+                    chapelCheckBox.Checked = true;
+                if (line.Contains("exaustor"))
+                    exhaustCheckBox.Checked = true;
+                line = sr.ReadLine();
+                if (line.Contains("outros"))
+                {
+                    otherEPCCheckBox.Checked = true;
+                    string[] field = line.Split(':');
+                    otherEPCTextBox.Text = field[1];
+                    line = sr.ReadLine();
+                }
+                if (line.Contains("sem segurança"))
+                {
+                    noEmergentyBoxCheckBox.Checked = true;
+                    line = sr.ReadLine();
+                }
+                else
+                {
+                    if (line.Contains("microporo"))
+                        microporeTapeCheckBox.Checked = true;
+                    if (line.Contains("gaze"))
+                        gazeCheckBox.Checked = true;
+                    if (line.Contains("tesouras"))
+                        scisorsCheckBox.Checked = true;
+                    if (line.Contains("água"))
+                        waterCheckBox.Checked = true;
+                    line = sr.ReadLine();
+                    if (line.Contains("outros"))
+                    {
+                        otherFirstAidCheckBox.Checked = true;
+                        string[] field = line.Split(':');
+                        otherFirstAidTextBox.Text = field[1];
+                        line = sr.ReadLine();
+                    }
+                }
+
+                if (line.Contains("sem segurança"))
+                {
+                    noRadioButton.Checked = true;
+                    sr.Close();
+                    return;
+                }
+                else
+                {
+                    if (line.Contains("segurança"))
+                    {
+                        yesRadioButton.Checked = true;
+                        line = sr.ReadLine();
+                        string[] field = line.Split(' ');
+                        numericUpDown1.Value = Convert.ToDecimal(field[0]);
+                        if (field[1] == "dias")
+                            daysRadioButton.Checked = true;
+                        if (field[1] == "semanas")
+                            weeksRadioButton.Checked = true;
+                        if (field[1] == "meses")
+                            monthsRadioButton.Checked = true;
+                        if (field[1] == "anos")
+                            yearsRadioButton.Checked = true;
+
+                        line = sr.ReadLine();
+                        while (line != "<\\labSafetyInfo>")
+                        {
+                            textBox1.Text += line+"\r\n";
+                            if (sr.Peek() == '\n')
+                                break;
+
+                            line = sr.ReadLine();
+                        }
+                        sr.Close();
+                    }
+                }
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@
         public string mixtureDescription;
         public bool inert;
 
+
         public ChemicalReactor()
         {
 

@@ -1,6 +1,7 @@
 ﻿using RyskTech.Forms.Unit.Controls;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace RyskTech.Forms.Unit
@@ -16,9 +17,19 @@ namespace RyskTech.Forms.Unit
         private StructureControl testStructureControl;
         private HistoryControl testHistoryControl;
         private MethodologyControl testMethodologyControl;
+        private bool saved;
+        private string path;
 
         public UnitMainForm()
         {
+            InitializeComponent();
+        }
+
+        public UnitMainForm(bool saved, string path)
+        {
+
+            this.saved = saved;
+            this.path = path;
             InitializeComponent();
         }
 
@@ -47,6 +58,26 @@ namespace RyskTech.Forms.Unit
 
             progress = 1;
             this.data = new Data.Unit();
+
+            if (saved == true)
+            {
+                testWelcomeControl.loadWelcomeInfo(path);
+
+                activeControlPanel.Controls.Add(testLocationControl);
+                testLocationControl.loadLocationInfo(path);
+                
+                activeControlPanel.Controls.Add(testTeamControl);
+                testTeamControl.loadTeamInfo(path);
+
+                activeControlPanel.Controls.Add(testStructureControl);
+                testStructureControl.loadStructureInformation(path);
+
+                activeControlPanel.Controls.Add(testHistoryControl);
+                testHistoryControl.loadHistory(path);
+
+                activeControlPanel.Controls.Add(testMethodologyControl);
+                testMethodologyControl.loadMethodology(path);
+            }
         }
 
         private void cleartabButtonColors()
@@ -216,6 +247,63 @@ namespace RyskTech.Forms.Unit
                     break;
             }
 
+        }
+
+        public static void AddText(FileStream fs, string value)
+        {
+            byte[] info = new System.Text.UTF8Encoding(true).GetBytes(value);
+            fs.Write(info, 0, info.Length);
+        }
+
+        private void saveProgress()
+        {
+            try
+            {
+                string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string newfolder = Path.Combine(appdata, "Rysktech");
+                Directory.CreateDirectory(newfolder);
+                string filename = "progress.ryskunit";
+                newfolder = Path.Combine(newfolder, filename);
+                using (System.IO.FileStream fs = System.IO.File.Create(newfolder))
+                {
+                    testWelcomeControl.writeWelcomeInfo(fs);
+
+                    if (!activeControlPanel.Controls.Contains(testLocationControl))
+                        activeControlPanel.Controls.Add(testLocationControl);
+                   testLocationControl.writeLocationInfo(fs);
+
+                    if (!activeControlPanel.Controls.Contains(testTeamControl))
+                        activeControlPanel.Controls.Add(testTeamControl);
+                    testTeamControl.writeTeamInformation(fs);
+
+                    if(!activeControlPanel.Controls.Contains(testStructureControl))
+                        activeControlPanel.Controls.Add(testStructureControl);
+                    testStructureControl.writeStructureInformation(fs);
+
+                    if(!activeControlPanel.Controls.Contains(testHistoryControl))
+                        activeControlPanel.Controls.Add(testHistoryControl);
+                    testHistoryControl.writeHistory(fs);
+
+                    if(!activeControlPanel.Controls.Contains(testMethodologyControl))
+                        activeControlPanel.Controls.Add(testMethodologyControl);
+                    testMethodologyControl.writeMethodology(fs);
+                }
+
+
+
+
+                MessageBox.Show("Progresso salvo com sucesso!");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            saveProgress();
         }
     }
 }

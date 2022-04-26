@@ -11,12 +11,14 @@ namespace RyskTech.Data
         public bool manipulatesBiologicalAgents;
         public bool manipulatesPhysicalAgents;
 
+        public DateTime date;
 
         public LabScope()
         {
             manipulatesChemicalAgents = false;
             manipulatesBiologicalAgents = false;
             manipulatesPhysicalAgents = false;
+            date = DateTime.MinValue;
         }
 
         public void CheckValidity()

@@ -14,9 +14,24 @@ namespace RyskTech.Forms.Lab
             InitializeComponent();
             if (agent != null)
             {
+                 
+                string[] safetyMeasures = agent.safetyNet.Split('\n');
+            
+
+                if (safetyMeasures != null)
+                {
+
+                    foreach (string s in safetyMeasures)
+                    {
+                        if(s.Length > 0)
+                        safetyMeasuresListBox.Items.Add(s);
+                        
+
+                    }
+
+                }
                 dangerComboBox.Text = agent.associatedDanger;
                 riskComboBox.Text = agent.description;
-                safetyGuardComboBox.Text = agent.safetyNet;
                 frequencyClassificationComboBox.Text = agent.frequencyClassification;
                 severityClassificationComboBox.Text = agent.severityClassification;
             }
@@ -43,7 +58,7 @@ namespace RyskTech.Forms.Lab
         private void concludeButton_Click(object sender, EventArgs e)
         {
             string safetyMeasures = "";
-            foreach (string item in safetyMeasuresListBox.Items.Cast<String>().ToList())
+            foreach (string item in safetyMeasuresListBox.Items)
             {
                 safetyMeasures += item + "\n";
             }

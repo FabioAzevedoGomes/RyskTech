@@ -391,6 +391,7 @@
     <EmbeddedResource Include="Resources\Language\pt_local.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>pt_local.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

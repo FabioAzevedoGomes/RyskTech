@@ -7,6 +7,7 @@ namespace RyskTech.Data
         public string responsiblePersonName;
         public string responsiblePersonContact;
         public string responsiblePersonOccupation;
+        public string responsiblePersonEmail;
 
         public string building;
         public string room;

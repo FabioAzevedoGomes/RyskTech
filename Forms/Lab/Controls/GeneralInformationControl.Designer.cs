@@ -49,7 +49,7 @@ namespace RyskTech.Forms.Lab.Controls
             this.label5 = new System.Windows.Forms.Label();
             this.contactGroupBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.responsiblePersonOccupation = new System.Windows.Forms.TextBox();
+            this.responsiblePersonName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.responsiblePersonContactTextBox = new System.Windows.Forms.TextBox();
@@ -84,6 +84,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.publicNumericUpDown);
             this.groupBox3.Controls.Add(this.studentsNumericUpDown);
             this.groupBox3.Controls.Add(this.technicsNumericUpDown);
@@ -101,6 +102,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // publicNumericUpDown
             // 
+            this.publicNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.publicNumericUpDown.Location = new System.Drawing.Point(137, 70);
             this.publicNumericUpDown.Maximum = new decimal(new int[] {
             10000,
@@ -114,6 +116,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // studentsNumericUpDown
             // 
+            this.studentsNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.studentsNumericUpDown.Location = new System.Drawing.Point(137, 50);
             this.studentsNumericUpDown.Maximum = new decimal(new int[] {
             10000,
@@ -127,6 +130,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // technicsNumericUpDown
             // 
+            this.technicsNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.technicsNumericUpDown.Location = new System.Drawing.Point(137, 31);
             this.technicsNumericUpDown.Maximum = new decimal(new int[] {
             10000,
@@ -140,6 +144,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // teachersNumericUpDown
             // 
+            this.teachersNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.teachersNumericUpDown.Location = new System.Drawing.Point(137, 11);
             this.teachersNumericUpDown.Maximum = new decimal(new int[] {
             10000,
@@ -189,6 +194,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.roomTextBox);
             this.groupBox2.Controls.Add(this.buildingTextBox);
             this.groupBox2.Controls.Add(this.label7);
@@ -199,9 +205,11 @@ namespace RyskTech.Forms.Lab.Controls
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Localização";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // roomTextBox
             // 
+            this.roomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.roomTextBox.Location = new System.Drawing.Point(64, 47);
             this.roomTextBox.Margin = new System.Windows.Forms.Padding(12);
             this.roomTextBox.Name = "roomTextBox";
@@ -211,6 +219,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // buildingTextBox
             // 
+            this.buildingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buildingTextBox.Location = new System.Drawing.Point(64, 19);
             this.buildingTextBox.Margin = new System.Windows.Forms.Padding(12);
             this.buildingTextBox.Name = "buildingTextBox";
@@ -238,6 +247,9 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.spaceCharacterizationTextBox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(22, 202);
@@ -249,6 +261,9 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // spaceCharacterizationTextBox
             // 
+            this.spaceCharacterizationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.spaceCharacterizationTextBox.Location = new System.Drawing.Point(24, 41);
             this.spaceCharacterizationTextBox.Multiline = true;
             this.spaceCharacterizationTextBox.Name = "spaceCharacterizationTextBox";
@@ -267,6 +282,8 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // contactGroupBox
             // 
+            this.contactGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.contactGroupBox.Controls.Add(this.panel1);
             this.contactGroupBox.Location = new System.Drawing.Point(19, 28);
             this.contactGroupBox.Name = "contactGroupBox";
@@ -277,7 +294,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.responsiblePersonOccupation);
+            this.panel1.Controls.Add(this.responsiblePersonName);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.responsiblePersonContactTextBox);
@@ -292,13 +309,15 @@ namespace RyskTech.Forms.Lab.Controls
             this.panel1.Size = new System.Drawing.Size(335, 156);
             this.panel1.TabIndex = 0;
             // 
-            // responsiblePersonOccupation
+            // responsiblePersonName
             // 
-            this.responsiblePersonOccupation.Location = new System.Drawing.Point(68, 37);
-            this.responsiblePersonOccupation.Name = "responsiblePersonOccupation";
-            this.responsiblePersonOccupation.Size = new System.Drawing.Size(254, 20);
-            this.responsiblePersonOccupation.TabIndex = 8;
-            this.responsiblePersonOccupation.TextChanged += new System.EventHandler(this.responsiblePersonOccupation_TextChanged);
+            this.responsiblePersonName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.responsiblePersonName.Location = new System.Drawing.Point(68, 37);
+            this.responsiblePersonName.Name = "responsiblePersonName";
+            this.responsiblePersonName.Size = new System.Drawing.Size(254, 20);
+            this.responsiblePersonName.TabIndex = 8;
+            this.responsiblePersonName.TextChanged += new System.EventHandler(this.responsiblePersonName_TextChanged);
             // 
             // label8
             // 
@@ -312,6 +331,8 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // textBox3
             // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Location = new System.Drawing.Point(68, 119);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(254, 20);
@@ -320,6 +341,8 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // responsiblePersonContactTextBox
             // 
+            this.responsiblePersonContactTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.responsiblePersonContactTextBox.Location = new System.Drawing.Point(68, 90);
             this.responsiblePersonContactTextBox.Name = "responsiblePersonContactTextBox";
             this.responsiblePersonContactTextBox.Size = new System.Drawing.Size(254, 20);
@@ -328,6 +351,8 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // responsiblePersonTextBox
             // 
+            this.responsiblePersonTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.responsiblePersonTextBox.Location = new System.Drawing.Point(68, 63);
             this.responsiblePersonTextBox.Name = "responsiblePersonTextBox";
             this.responsiblePersonTextBox.Size = new System.Drawing.Size(254, 20);
@@ -417,7 +442,7 @@ namespace RyskTech.Forms.Lab.Controls
         private System.Windows.Forms.TextBox buildingTextBox;
         private System.Windows.Forms.TextBox roomTextBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox responsiblePersonOccupation;
+        private System.Windows.Forms.TextBox responsiblePersonName;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.NumericUpDown publicNumericUpDown;
         private System.Windows.Forms.NumericUpDown studentsNumericUpDown;

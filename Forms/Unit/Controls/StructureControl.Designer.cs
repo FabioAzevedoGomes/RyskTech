@@ -31,11 +31,6 @@ namespace RyskTech.Forms.Unit.Controls
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.InternalStructureDataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.editSpaceButton = new System.Windows.Forms.Button();
-            this.removeSpaceButton = new System.Windows.Forms.Button();
-            this.addSpaceButton = new System.Windows.Forms.Button();
             this.building = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.level = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +38,11 @@ namespace RyskTech.Forms.Unit.Controls
             this.usage_end = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surroundingsInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weekDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.editSpaceButton = new System.Windows.Forms.Button();
+            this.removeSpaceButton = new System.Windows.Forms.Button();
+            this.addSpaceButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InternalStructureDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -71,6 +71,7 @@ namespace RyskTech.Forms.Unit.Controls
             // 
             this.InternalStructureDataGridView.AllowUserToAddRows = false;
             this.InternalStructureDataGridView.AllowUserToDeleteRows = false;
+            this.InternalStructureDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.InternalStructureDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.InternalStructureDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.building,
@@ -87,6 +88,48 @@ namespace RyskTech.Forms.Unit.Controls
             this.InternalStructureDataGridView.ReadOnly = true;
             this.InternalStructureDataGridView.Size = new System.Drawing.Size(580, 379);
             this.InternalStructureDataGridView.TabIndex = 2;
+            // 
+            // building
+            // 
+            this.building.HeaderText = "Prédio";
+            this.building.Name = "building";
+            this.building.ReadOnly = true;
+            // 
+            // room
+            // 
+            this.room.HeaderText = "Sala";
+            this.room.Name = "room";
+            this.room.ReadOnly = true;
+            // 
+            // level
+            // 
+            this.level.HeaderText = "Andar";
+            this.level.Name = "level";
+            this.level.ReadOnly = true;
+            // 
+            // usage_start
+            // 
+            this.usage_start.HeaderText = "Início do turno";
+            this.usage_start.Name = "usage_start";
+            this.usage_start.ReadOnly = true;
+            // 
+            // usage_end
+            // 
+            this.usage_end.HeaderText = "Fim do turno";
+            this.usage_end.Name = "usage_end";
+            this.usage_end.ReadOnly = true;
+            // 
+            // surroundingsInfo
+            // 
+            this.surroundingsInfo.HeaderText = "Comentários";
+            this.surroundingsInfo.Name = "surroundingsInfo";
+            this.surroundingsInfo.ReadOnly = true;
+            // 
+            // weekDays
+            // 
+            this.weekDays.HeaderText = "Dias";
+            this.weekDays.Name = "weekDays";
+            this.weekDays.ReadOnly = true;
             // 
             // label1
             // 
@@ -144,49 +187,6 @@ namespace RyskTech.Forms.Unit.Controls
             this.addSpaceButton.Text = "Adicionar";
             this.addSpaceButton.UseVisualStyleBackColor = true;
             this.addSpaceButton.Click += new System.EventHandler(this.addSpaceButton_Click);
-            // 
-            // building
-            // 
-            this.building.HeaderText = "Prédio";
-            this.building.Name = "building";
-            this.building.ReadOnly = true;
-            this.building.Width = 130;
-            // 
-            // room
-            // 
-            this.room.HeaderText = "Sala";
-            this.room.Name = "room";
-            this.room.ReadOnly = true;
-            // 
-            // level
-            // 
-            this.level.HeaderText = "Andar";
-            this.level.Name = "level";
-            this.level.ReadOnly = true;
-            // 
-            // usage_start
-            // 
-            this.usage_start.HeaderText = "Início do turno";
-            this.usage_start.Name = "usage_start";
-            this.usage_start.ReadOnly = true;
-            // 
-            // usage_end
-            // 
-            this.usage_end.HeaderText = "Fim do turno";
-            this.usage_end.Name = "usage_end";
-            this.usage_end.ReadOnly = true;
-            // 
-            // surroundingsInfo
-            // 
-            this.surroundingsInfo.HeaderText = "Comentários";
-            this.surroundingsInfo.Name = "surroundingsInfo";
-            this.surroundingsInfo.ReadOnly = true;
-            // 
-            // weekDays
-            // 
-            this.weekDays.HeaderText = "Dias";
-            this.weekDays.Name = "weekDays";
-            this.weekDays.ReadOnly = true;
             // 
             // StructureControl
             // 

@@ -101,5 +101,60 @@ namespace RyskTech.Forms.Lab.Controls
         {
 
         }
+
+        public void writePhysicalInfo(System.IO.FileStream fs)
+        {
+            CreatePhyisicalAgentList();
+            LabMainForm.AddText(fs, "<labPhysicalInfo>\n");
+            if(this.physicalAgentList.Count > 0)
+            {
+                LabMainForm.AddText(fs, "AGENTES\n");
+
+                foreach(PhysicalAgent phy in this.physicalAgentList)
+                {
+                    LabMainForm.AddText(fs, phy.equipment + '£');
+                    LabMainForm.AddText(fs, phy.usage.Replace('\n', ',') + '£');
+                    LabMainForm.AddText(fs, phy.generatedRisks.Replace("\n", "#####") + '\n');
+                }
+
+                
+            }
+            else { LabMainForm.AddText(fs, "SEM AGENTES\n"); }
+
+            LabMainForm.AddText(fs, "<\\labPhysicalInfo>\n");
+        }
+
+        private void parseAgent(string line)
+        {
+            string[] information = line.Split('£');
+            PhysicalAgent phy = new PhysicalAgent();
+            phy.equipment = information[0];
+            phy.usage = information[1].Replace(',', '\n');
+            phy.generatedRisks = information[2].Replace("#####", "\n");
+            AddAgentDataToTable(phy);
+        }
+
+        public void loadPhysicalInfo(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<labPhysicalInfo>");
+                line = sr.ReadLine();
+                if (line == "AGENTES")
+                {
+                    line = sr.ReadLine();
+                    while (line != "<\\labPhysicalInfo>")
+                    {
+                        parseAgent(line);
+                        line = sr.ReadLine();
+                    }
+                    sr.Close();
+                }
+                else sr.Close();
+
+            }
+        }
     }
 }

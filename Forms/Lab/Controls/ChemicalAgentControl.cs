@@ -265,5 +265,229 @@ namespace RyskTech.Forms.Lab.Controls
             if (storageInfo != null)
                 storageInfo.CheckValidity();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(residuosCheckbox.Checked == true)
+            {
+                label3.Visible = true;
+                chemicalResidueData.Visible = true;
+                addResidueButton.Visible = true;
+                editResidueButton.Visible = true;
+                removeResidueButton.Visible = true;
+                chemicalReactorData.Width = groupBox1.Width/2;
+                chemicalResidueData.Width = groupBox1.Width / 2 - 20;
+                chemicalResidueData.Location = new System.Drawing.Point(groupBox1.Width / 2 + 15, 75);
+            }
+
+            if(residuosCheckbox.Checked == false)
+            {
+                label3.Visible = false;
+                chemicalResidueData.Visible = false;
+                addResidueButton.Visible = false;
+                editResidueButton.Visible = false;
+                removeResidueButton.Visible = false;
+                chemicalReactorData.Width = groupBox1.Width - 20;
+                this.residueData.Clear();
+                chemicalResidueData.Rows.Clear();
+
+            }
+
+        }
+
+        public void resized(object sender, EventArgs e)
+        {
+            if (residuosCheckbox.Checked == true)
+            {
+                chemicalReactorData.Width = groupBox1.Width / 2 - 20;
+                chemicalResidueData.Width = groupBox1.Width / 2 - 20;
+                chemicalResidueData.Location = new System.Drawing.Point(groupBox1.Width/2+15, 75); //Sendo 75 a altura
+            }
+
+
+        }
+
+        public void writeChemicalInfo(System.IO.FileStream fs)
+        {
+            
+                CreateReactorList();
+                CreateResidueList();
+            
+
+            LabMainForm.AddText(fs, "<labChemicalInfo>\n");
+
+            if (this.reactorData.Count > 0)
+            {
+                LabMainForm.AddText(fs, "REAGENTES");
+                foreach (ChemicalReactor cr in this.reactorData)
+                {
+                    dumpReactorData(cr, fs);
+                }
+                LabMainForm.AddText(fs, "\nEND\n");
+            }
+            else LabMainForm.AddText(fs, "SEM REAGENTES\n");
+            if(residuosCheckbox.Checked == true && this.residueData.Count > 0)
+            {
+                LabMainForm.AddText(fs, "RESÍDUOS");
+                foreach(ChemicalResidue cr in this.residueData)
+                {
+                    dumpResidueData(cr, fs);
+                }
+                LabMainForm.AddText(fs, "\nEND\n");
+            }
+            else
+            {
+                LabMainForm.AddText(fs, "SEM RESÍDUOS\n");
+            }
+
+            if (yesRadioButton.Checked == true)
+                LabMainForm.AddText(fs, "Sim\n");
+            else LabMainForm.AddText(fs, "Não\n");
+
+            if (hasFISPQRadioButton.Checked == true)
+                LabMainForm.AddText(fs, "Sim\n");
+            else LabMainForm.AddText(fs, "Não\n");
+
+            LabMainForm.AddText(fs, textBox2.Text + '\n');
+            LabMainForm.AddText(fs, "<\\labChemicalInfo>\n");
+        }
+
+        private string removeNewLine(ChemicalReactor cr)
+        {
+            string line;
+            line = '\n' + cr.name + "£" + cr.physicalState + "£" + cr.origin.Replace("\n", ",") + "£" + cr.quantity + "£" +
+                cr.measurementUnit + "£" + cr.mixtureDescription + "£" + cr.casNumber + "£" + cr.dangerCharacteristics.Replace("\n", ",") + "£" +
+                cr.inert + "£" + cr.storageDetails + "£" + cr.container.Replace("\n", ",");
+            return line;
+        }
+
+        private string removeResidueNewLine(ChemicalResidue cr)
+        {
+            string line;
+            line = '\n' + cr.name + "£" + cr.physicalState + "£" + cr.origin.Replace("\n", ",") + "£" + cr.quantity + "£" +
+                 cr.measurementUnit + "£" + cr.dangerous + "£" + cr.dangerCharacteristics.Replace("\n", ",") + "£" +
+                 cr.inert + "£" + cr.storageDetails + "£" + cr.container.Replace("\n", ",");
+            return line;
+        }
+
+        private void dumpReactorData(ChemicalReactor cr, System.IO.FileStream fs)
+        {
+            LabMainForm.AddText(fs, this.removeNewLine(cr));
+        }
+        private void dumpResidueData(ChemicalResidue cr, System.IO.FileStream fs)
+        {
+            LabMainForm.AddText(fs, this.removeResidueNewLine(cr));
+        }
+
+
+        private void parseReagentLine(string line)
+        {
+            string[] information = line.Split('£');
+
+            ChemicalReactor loadedReagent = new ChemicalReactor();
+            loadedReagent.name = information[0];
+            loadedReagent.physicalState = information[1];
+            loadedReagent.origin = information[2].Replace(',', '\n');
+            loadedReagent.quantity = (float)Convert.ToDouble(information[3]);
+            loadedReagent.measurementUnit = information[4];
+            loadedReagent.mixtureDescription = information[5];
+            loadedReagent.casNumber = information[6];
+            loadedReagent.dangerCharacteristics = information[7].Replace(',', '\n');
+            loadedReagent.inert = Convert.ToBoolean(information[8]);
+            loadedReagent.storageDetails = information[9];
+            loadedReagent.container = information[10].Replace(',', '\n');          
+            
+            this.addReactorDataToTable(loadedReagent);
+        }
+
+        private void parseResidueLine(string line)
+        {
+            string[] information = line.Split('£');
+
+            ChemicalResidue loadedResidue = new ChemicalResidue();
+            loadedResidue.name = information[0];
+            loadedResidue.physicalState = information[1];
+            loadedResidue.origin = information[2].Replace(',', '\n');
+            loadedResidue.quantity = (float)Convert.ToDouble(information[3]);
+            loadedResidue.measurementUnit = information[4];
+            loadedResidue.dangerous = Convert.ToBoolean(information[5]);
+            loadedResidue.dangerCharacteristics = information[6].Replace(',', '\n');
+            loadedResidue.inert = Convert.ToBoolean(information[7]);  
+            loadedResidue.storageDetails = information[8];
+            loadedResidue.container = information[9].Replace(',', '\n');
+
+            this.addResidueDataToTable(loadedResidue);
+
+        }
+
+        public void loadChemicalInfo(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<labChemicalInfo>");
+                line = sr.ReadLine();
+                if (line == "REAGENTES")
+                {
+                    line = sr.ReadLine();
+
+                    while (line != "END")
+                    {
+                        parseReagentLine(line);
+                        line = sr.ReadLine();
+                    }
+
+                    line = sr.ReadLine();
+                }
+                else line = sr.ReadLine();
+
+                if (line == "RESÍDUOS")
+                {
+                    residuosCheckbox.Checked = true;
+                    line = sr.ReadLine();
+
+                    while (line != "END")
+                    {
+                        parseResidueLine(line);
+                        line = sr.ReadLine();
+
+                    }
+                    line = sr.ReadLine();
+                }
+                else line = sr.ReadLine();
+
+                if(line == "Sim")
+                    yesRadioButton.Checked = true;
+                else noRadioButton.Checked = true;
+
+                line =sr.ReadLine();
+
+                if(line == "Sim")
+                    hasFISPQRadioButton.Checked = true;
+                else noFISPQRadioButton.Checked= true;
+
+                line = sr.ReadLine();
+                while (line != "<\\labChemicalInfo>")
+                {
+                    textBox2.Text += line + "\r\n";
+                    if (sr.Peek() == '\n')
+                        break;
+
+                    line = sr.ReadLine();
+                }
+
+                sr.Close();
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chemicalReactorData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

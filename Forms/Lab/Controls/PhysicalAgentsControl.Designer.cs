@@ -65,12 +65,16 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             this.phyisicalAgentsDataGridView.AllowUserToAddRows = false;
             this.phyisicalAgentsDataGridView.AllowUserToDeleteRows = false;
+            this.phyisicalAgentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.phyisicalAgentsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.phyisicalAgentsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.phyisicalAgentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.phyisicalAgentsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.equipment,
             this.usage,
             this.risks});
-            this.phyisicalAgentsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.phyisicalAgentsDataGridView.Location = new System.Drawing.Point(3, 47);
             this.phyisicalAgentsDataGridView.Name = "phyisicalAgentsDataGridView";
             this.phyisicalAgentsDataGridView.ReadOnly = true;

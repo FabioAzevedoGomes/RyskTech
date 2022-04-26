@@ -41,6 +41,7 @@ namespace RyskTech.Forms.Unit.Controls
                 entry.turnStart = System.TimeSpan.Parse(row.Cells[3].Value.ToString());
                 entry.turnEnd = System.TimeSpan.Parse(row.Cells[4].Value.ToString());
                 entry.surroundingsComments = row.Cells[5].Value.ToString();
+                entry.weekDays = row.Cells[6].Value.ToString();
 
                 EditSpaceForm form = new EditSpaceForm(entry);
                 form.ShowDialog();
@@ -115,5 +116,70 @@ namespace RyskTech.Forms.Unit.Controls
             data.spaces = GetStructureData();
             data.CheckValidity();
         }
-    }
+
+
+        public void writeStructureInformation(System.IO.FileStream fs)
+        {
+            data.spaces = GetStructureData();
+            UnitMainForm.AddText(fs, "<unitStructure>\n");
+            if (this.data.spaces.Count > 0)
+            {
+                UnitMainForm.AddText(fs, "ESPAÇOS\n");
+
+                foreach (Space sp in this.data.spaces)
+                {
+                    UnitMainForm.AddText(fs, sp.buildingIdentifier + '£');
+                    UnitMainForm.AddText(fs, sp.roomIdentifier + '£');
+                    UnitMainForm.AddText(fs, sp.floorIdentifier + '£');
+                    UnitMainForm.AddText(fs, sp.turnStart.ToString() + '£');
+                    UnitMainForm.AddText(fs, sp.turnEnd.ToString() + '£');
+                    UnitMainForm.AddText(fs, sp.surroundingsComments + '£');
+                    UnitMainForm.AddText(fs, sp.weekDays.Replace('\n', ',') + '\n');
+                }
+            }
+            else UnitMainForm.AddText(fs, "SEM ESPAÇOS\n");
+            UnitMainForm.AddText(fs, "<\\unitStructure>\n");
+
+
+        }
+
+        private void parseSpace(string line)
+        {
+            string[] parser = line.Split('£');
+            Space sp = new Space();
+            sp.buildingIdentifier = parser[0];
+            sp.roomIdentifier = parser[1];
+            sp.floorIdentifier = parser[2];
+            sp.turnStart = System.TimeSpan.Parse(parser[3]);
+            sp.turnEnd = System.TimeSpan.Parse(parser[4]); 
+            sp.surroundingsComments = parser[5];
+            sp.weekDays = parser[6].Replace(',','\n');
+            addDataToTable(sp);
+        }
+
+        public void loadStructureInformation(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<unitStructure>");
+                line = sr.ReadLine();
+                if (line == "ESPAÇOS")
+                {
+                    line = sr.ReadLine();
+                    while (line != "<\\unitStructure>")
+                    {
+                        parseSpace(line);
+                        line = sr.ReadLine();
+                    }
+                    sr.Close();
+                }
+                else sr.Close();
+            }
+
+        }
+
+
+
+        }
 }

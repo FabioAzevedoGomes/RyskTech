@@ -42,6 +42,7 @@ namespace RyskTech
             info.Add("Unidade pertencente: " + lab.generalInformation.belongingUnitName);
             info.Add("Prédio: " + lab.spaceCharacterization.building);
             info.Add("Sala: " + lab.spaceCharacterization.room);
+            info.Add("Data: " + lab.generalInformation.date.ToString()); 
             info.Add(lab.spaceCharacterization.responsiblePersonOccupation + ": " + lab.spaceCharacterization.responsiblePersonName + "(" + lab.spaceCharacterization.responsiblePersonContact + ")");
 
             return info;

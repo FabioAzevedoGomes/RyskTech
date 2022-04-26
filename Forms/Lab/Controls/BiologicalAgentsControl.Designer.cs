@@ -86,6 +86,9 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.bioResidueDestinationTextBox);
@@ -117,6 +120,8 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // bioResidueDestinationTextBox
             // 
+            this.bioResidueDestinationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.bioResidueDestinationTextBox.Location = new System.Drawing.Point(13, 110);
             this.bioResidueDestinationTextBox.Margin = new System.Windows.Forms.Padding(10);
             this.bioResidueDestinationTextBox.Multiline = true;
@@ -128,6 +133,8 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // bioStorageTextBox
             // 
+            this.bioStorageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.bioStorageTextBox.Location = new System.Drawing.Point(13, 41);
             this.bioStorageTextBox.Margin = new System.Windows.Forms.Padding(10);
             this.bioStorageTextBox.Multiline = true;
@@ -139,6 +146,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.sisgenRegistryNumberTextBox);
             this.groupBox3.Controls.Add(this.panel4);
             this.groupBox3.Controls.Add(this.panel3);
@@ -257,6 +265,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.removeSampleButton);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.newProcessedSampleTextBox);
@@ -317,6 +326,8 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
@@ -373,6 +384,9 @@ namespace RyskTech.Forms.Lab.Controls
             // bioAgentData
             // 
             this.bioAgentData.AllowUserToAddRows = false;
+            this.bioAgentData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bioAgentData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.bioAgentData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bioAgentData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,

@@ -105,6 +105,9 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.numericUpDown1);
             this.groupBox2.Controls.Add(this.label7);
@@ -255,6 +258,9 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(224, 37);
             this.textBox1.Multiline = true;
@@ -265,6 +271,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(445, 3);
             this.groupBox1.Name = "groupBox1";
@@ -391,6 +398,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // epcGroupBox
             // 
+            this.epcGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.epcGroupBox.Controls.Add(this.tableLayoutPanel4);
             this.epcGroupBox.Location = new System.Drawing.Point(232, 3);
             this.epcGroupBox.Name = "epcGroupBox";
@@ -541,6 +549,8 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // epiGroupBox
             // 
+            this.epiGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.epiGroupBox.Controls.Add(this.tableLayoutPanel3);
             this.epiGroupBox.Location = new System.Drawing.Point(3, 3);
             this.epiGroupBox.Name = "epiGroupBox";

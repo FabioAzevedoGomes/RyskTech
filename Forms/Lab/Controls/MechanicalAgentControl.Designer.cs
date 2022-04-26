@@ -35,10 +35,10 @@ namespace RyskTech.Forms.Lab.Controls
             this.riks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.additionalInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.editMechanicalAgentButton = new System.Windows.Forms.Button();
             this.removeAgentButton = new System.Windows.Forms.Button();
             this.addAgentButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.editMechanicalAgentButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mechanicalAgentsDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -65,12 +65,16 @@ namespace RyskTech.Forms.Lab.Controls
             // mechanicalAgentsDataGridView
             // 
             this.mechanicalAgentsDataGridView.AllowUserToAddRows = false;
+            this.mechanicalAgentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mechanicalAgentsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.mechanicalAgentsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.mechanicalAgentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mechanicalAgentsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.agentName,
             this.riks,
             this.additionalInfo});
-            this.mechanicalAgentsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mechanicalAgentsDataGridView.Location = new System.Drawing.Point(5, 66);
             this.mechanicalAgentsDataGridView.Margin = new System.Windows.Forms.Padding(5);
             this.mechanicalAgentsDataGridView.Name = "mechanicalAgentsDataGridView";
@@ -91,7 +95,6 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             this.additionalInfo.HeaderText = "Informações Adicionais";
             this.additionalInfo.Name = "additionalInfo";
-            this.additionalInfo.Width = 150;
             // 
             // panel1
             // 
@@ -103,6 +106,16 @@ namespace RyskTech.Forms.Lab.Controls
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(590, 46);
             this.panel1.TabIndex = 3;
+            // 
+            // editMechanicalAgentButton
+            // 
+            this.editMechanicalAgentButton.Location = new System.Drawing.Point(93, 11);
+            this.editMechanicalAgentButton.Name = "editMechanicalAgentButton";
+            this.editMechanicalAgentButton.Size = new System.Drawing.Size(75, 23);
+            this.editMechanicalAgentButton.TabIndex = 2;
+            this.editMechanicalAgentButton.Text = "Editar";
+            this.editMechanicalAgentButton.UseVisualStyleBackColor = true;
+            this.editMechanicalAgentButton.Click += new System.EventHandler(this.editMechanicalAgentButton_Click);
             // 
             // removeAgentButton
             // 
@@ -136,16 +149,6 @@ namespace RyskTech.Forms.Lab.Controls
             this.label1.Text = "Preencha a tabela abaixo com os agentes mecânicos e riscos associados no seu espa" +
     "ço";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // editMechanicalAgentButton
-            // 
-            this.editMechanicalAgentButton.Location = new System.Drawing.Point(93, 11);
-            this.editMechanicalAgentButton.Name = "editMechanicalAgentButton";
-            this.editMechanicalAgentButton.Size = new System.Drawing.Size(75, 23);
-            this.editMechanicalAgentButton.TabIndex = 2;
-            this.editMechanicalAgentButton.Text = "Editar";
-            this.editMechanicalAgentButton.UseVisualStyleBackColor = true;
-            this.editMechanicalAgentButton.Click += new System.EventHandler(this.editMechanicalAgentButton_Click);
             // 
             // MechanicalAgentControl
             // 

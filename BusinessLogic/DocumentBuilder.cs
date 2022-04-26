@@ -78,6 +78,8 @@ namespace RyskTech
         {
             List<string> items = apr.GetFormattedGeneralInfoList();
 
+            AddSubsectionTitle(section, "Data");
+            AddTextParagraph(apr.lab.generalInformation.date.ToString());
             AddSubsectionTitle(section, "Informações gerais");
             AddListWithItems(items);
             AddSubsectionTitle(section, "Composição da equipe");
@@ -388,6 +390,8 @@ namespace RyskTech
         {
             List<string> directors = apr.GetDirectorsFormattedDescriptionList();
 
+            AddSectionWithTitle(this.documentReference.Sections.Count + ". Data");
+            AddTextParagraph(apr.unit.generalInformation.date.ToString());
             AddSectionWithTitle(this.documentReference.Sections.Count + ". Equipe");
             AddTextParagraph("Responsáveis: ");
             AddListWithItems(directors);

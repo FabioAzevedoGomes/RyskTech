@@ -163,5 +163,146 @@ namespace RyskTech.Forms.Lab.Controls
                 throw new ApplicationException(Resources.Language.pt_local.ErrorNoResidueDestination);
 
         }
+
+        private string dumpBioAgentData(BiologicalAgent bio, System.IO.FileStream fs)
+        {
+            return "\n" + bio.name + "£" + bio.riskClassification + "£" + bio.usageScenarios.Replace('\n', ',');
+        }
+
+        public void writeBiologicalInfo(System.IO.FileStream fs)
+        {
+            CreateBiologicalAgentList();
+
+            LabMainForm.AddText(fs, "<labBiologicalInfo>\n");
+            
+            if(this.data.biologicalAgentList.Count > 0)
+            {
+                LabMainForm.AddText(fs, "AGENTES");
+                foreach(BiologicalAgent agent in this.data.biologicalAgentList)
+                {
+                    LabMainForm.AddText(fs, dumpBioAgentData(agent, fs));
+                }
+                LabMainForm.AddText(fs, "\nEND\n");
+            }
+            else
+            {
+                LabMainForm.AddText(fs, "SEM AGENTES\n");
+            }
+            LabMainForm.AddText(fs, bioStorageTextBox.Text + '\n');
+            LabMainForm.AddText(fs, "&&&\n");
+            LabMainForm.AddText(fs, bioResidueDestinationTextBox.Text + '\n');
+            LabMainForm.AddText(fs, "&&&\n");
+            if (this.processedSamplesListBox.Items.Count > 0)
+            {
+                LabMainForm.AddText(fs, "AMOSTRAS\n");
+                foreach (string text in this.processedSamplesListBox.Items)
+                {
+                    LabMainForm.AddText(fs, text + '\n');
+                }
+                LabMainForm.AddText(fs, "END");
+            }
+            else LabMainForm.AddText(fs, "SEM AMOSTRAS");
+
+            if (ogmYesRadioButton.Checked == true)
+            {
+                LabMainForm.AddText(fs, "\nOGM\n");
+                LabMainForm.AddText(fs, sisgenRegistryNumberTextBox.Text + "\n");
+            }
+            else LabMainForm.AddText(fs, "\nSEM OGM\n");
+            if (certificateYesRadioButton.Checked == true)
+                LabMainForm.AddText(fs, "CERTIFICADO\n");
+            else LabMainForm.AddText(fs, "SEM CERTIFICADO\n");
+            LabMainForm.AddText(fs, "<\\labBiologicalInfo>\n");
+        }
+
+
+        public void loadBiologicalInfo(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<labBiologicalInfo>");
+                line = sr.ReadLine();
+                if (line == "AGENTES")
+                {
+                    line = sr.ReadLine();
+                    while(line != "END")
+                    {
+                        parseBioLine(line);
+                        line = sr.ReadLine();
+                    }
+
+                    line = sr.ReadLine();
+
+                }
+                else { line = sr.ReadLine(); }
+                while (line != "&&&")
+                {
+                    this.bioStorageTextBox.Text += line + "\r\n";
+                    if (sr.Peek() == '\n')
+                    {
+                        line = sr.ReadLine();
+                        
+                    }
+                    line = sr.ReadLine();
+                }
+                line = sr.ReadLine();
+                while (line != "&&&")
+                {
+                    this.bioResidueDestinationTextBox.Text += line + "\r\n";
+                    if (sr.Peek() == '\n') { 
+                        line = sr.ReadLine();
+                   
+                }
+                    line = sr.ReadLine();
+                }
+                line = sr.ReadLine();
+                if(line == "AMOSTRAS")
+                {
+                    line = sr.ReadLine();
+                    while(line != "END")
+                    {
+                        this.processedSamplesListBox.Items.Add(line);
+                        line = sr.ReadLine();
+                    }
+                    line =sr.ReadLine();
+                }
+                else line = sr.ReadLine();
+
+                if (line == "OGM")
+                {
+                    this.ogmYesRadioButton.Checked = true;
+                    this.ogmNoRadioButton.Checked = false;
+                    line = sr.ReadLine();
+                    this.sisgenRegistryNumberTextBox.Text = line;
+                    line = sr.ReadLine();
+                }
+                else line = sr.ReadLine();
+                if(line == "CERTIFICADO")
+                {
+                    this.certificateYesRadioButton.Checked = true;
+                    this.certificateNoRadioButton.Checked = false;
+                }
+                else
+                {
+                    this.certificateYesRadioButton.Checked = false;
+                    this.certificateNoRadioButton.Checked = true;
+                }
+
+                sr.Close();
+            }
+        }
+
+        private void parseBioLine(string line)
+        {
+
+            BiologicalAgent newAgent = new BiologicalAgent();
+            string[] information = line.Split('£');
+            newAgent.name = information[0];
+            newAgent.riskClassification = information[1];
+            newAgent.usageScenarios = information[2].Replace(',', '\n');
+
+            this.AddAgentDataToTable(newAgent);
+        }
     }
 }

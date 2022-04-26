@@ -5,6 +5,7 @@ namespace RyskTech.Data
     public class UnitScope
     {
         public string name;
+        public DateTime date;
 
         // TODO Analysis scope goes here maybe?
 

@@ -98,5 +98,38 @@ namespace RyskTech.Forms.Unit.Controls
             else
                 throw new ApplicationException(Resources.Language.pt_local.NotAllTabsVisited);
         }
+
+        public void writeLocationInfo(System.IO.FileStream fs)
+        {
+            UnitMainForm.AddText(fs, "<unitLocation>\n");
+            if (comboBox1.SelectedItem == null)
+                UnitMainForm.AddText(fs, "0" + '£');
+            else
+            UnitMainForm.AddText(fs, comboBox1.SelectedItem.ToString() + '£');
+            UnitMainForm.AddText(fs, StreetTextBox.Text + '£'
+                + NumberTextBox.Text + '£'
+                + NeighborhoodTextBox.Text + '£'
+                + ZIPTextBox.Text + '£'
+                + ComplementTextBox.Text);
+            UnitMainForm.AddText(fs, "\n<\\unitLocation>\n");
+        }
+        public void loadLocationInfo(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<unitLocation>");
+                line = sr.ReadLine();
+                string[] parseLine = line.Split('£');
+                if(parseLine[0] != "0")
+                comboBox1.SelectedItem = parseLine[0];
+                StreetTextBox.Text = parseLine[1];
+                NumberTextBox.Text = parseLine[2];
+                NeighborhoodTextBox.Text = parseLine[3];
+                ZIPTextBox.Text = parseLine[4];
+                ComplementTextBox.Text = parseLine[5];
+                sr.Close();
+            }
+        }
     }
 }

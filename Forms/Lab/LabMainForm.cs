@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Text; 
 
 namespace RyskTech.Forms.Lab
 {
@@ -11,6 +12,8 @@ namespace RyskTech.Forms.Lab
     {
         private Data.Lab data;
         private int progress;
+        private bool saved;
+        private string path;
 
         // Tabs
         private LabWelcomeControl labWelcomeControl;
@@ -27,6 +30,16 @@ namespace RyskTech.Forms.Lab
         {
             InitializeComponent();
         }
+
+        public LabMainForm(bool saved, string path)
+        {
+
+            this.saved = saved;
+            this.path = path;
+            InitializeComponent();
+        }
+
+
 
         private void LabMainFormBetter_Load(object sender, EventArgs e)
         {
@@ -64,6 +77,43 @@ namespace RyskTech.Forms.Lab
 
             progress = 1;
             data = new Data.Lab();
+
+            if (saved == true)
+            {
+                labWelcomeControl.loadWelcomeInfo(path);
+                activeControlPanel.Controls.Add(generalInformationControl);
+                generalInformationControl.loadGeneralInfo(path);
+                activeControlPanel.Controls.Add(safetyControl);
+                safetyControl.loadSafetyInfo(path);
+                if (labWelcomeControl.data.manipulatesChemicalAgents == true)
+                {
+                    activeControlPanel.Controls.Add(chemicalAgentControl);
+                    chemicalAgentControl.loadChemicalInfo(path);
+                }
+                if (labWelcomeControl.data.manipulatesBiologicalAgents == true) { 
+                activeControlPanel.Controls.Add(biologicalAgentControl);
+                biologicalAgentControl.loadBiologicalInfo(path);
+            }
+                if (labWelcomeControl.data.manipulatesPhysicalAgents == true)
+                {
+                    activeControlPanel.Controls.Add(physicalAgentControl);
+                    physicalAgentControl.loadPhysicalInfo(path);
+                }
+
+                activeControlPanel.Controls.Add(mechanicalAgentControl);
+                mechanicalAgentControl.loadMechanicalInfo(path);
+
+                activeControlPanel.Controls.Add(riskAnalysisControl);
+                riskAnalysisControl.loadRiskInfo(path);
+
+                activeControlPanel.Controls.Add(conclusionControl);
+                conclusionControl.loadConclusionInfo(path);
+
+
+
+
+               
+            }
         }
 
         private void clearTabButtonColors()
@@ -103,6 +153,7 @@ namespace RyskTech.Forms.Lab
             nextConcludeButton.Text = "Próximo";
 
             progress = 2;
+
         }
 
         private void safetyTabButton_Click(object sender, EventArgs e)
@@ -208,6 +259,7 @@ namespace RyskTech.Forms.Lab
             nextConcludeButton.Text = "Concluir";
 
             progress = 9;
+           
         }
 
         private void PrepareForGeneration()
@@ -351,6 +403,90 @@ namespace RyskTech.Forms.Lab
                     break;
             }
 
+        }
+
+        private void activeControlPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        public static void AddText(FileStream fs, string value)
+        {
+            byte[] info = new UTF8Encoding(true).GetBytes(value);
+            fs.Write(info, 0, info.Length);
+        }
+
+        private void saveProgress()
+        {
+            try
+                {
+                string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string newfolder = Path.Combine(appdata, "Rysktech");
+                Directory.CreateDirectory(newfolder);
+                string filename = "progress.rysklab";
+                newfolder = Path.Combine(newfolder, filename);
+                using (System.IO.FileStream fs = System.IO.File.Create(newfolder))
+                {
+                    labWelcomeControl.writeWelcomeInfo(fs);
+
+                    if (!activeControlPanel.Controls.Contains(generalInformationControl))
+                        activeControlPanel.Controls.Add(generalInformationControl);
+                    generalInformationControl.writeGeneralInfo(fs);
+
+                    if (!activeControlPanel.Controls.Contains(safetyControl))
+                        activeControlPanel.Controls.Add(safetyControl);
+                    safetyControl.writeSafetyInfo(fs);
+
+                    if (labWelcomeControl.data.manipulatesChemicalAgents == true)
+                    {
+                        if(!activeControlPanel.Controls.Contains(chemicalAgentControl))
+                        activeControlPanel.Controls.Add(chemicalAgentControl);
+                        chemicalAgentControl.writeChemicalInfo(fs);
+                    }
+                    if (labWelcomeControl.data.manipulatesBiologicalAgents == true)
+                    {
+                        if(!activeControlPanel.Contains(biologicalAgentControl))
+                        activeControlPanel.Controls.Add(biologicalAgentControl);
+                        biologicalAgentControl.writeBiologicalInfo(fs);
+                    }
+
+                    if( labWelcomeControl.data.manipulatesPhysicalAgents == true)
+                    {
+                        if(!activeControlPanel.Contains(physicalAgentControl))
+                            activeControlPanel.Controls.Add(physicalAgentControl);
+                        physicalAgentControl.writePhysicalInfo(fs);
+                    }
+
+                    if(!activeControlPanel.Contains(mechanicalAgentControl))
+                        activeControlPanel.Controls.Add(mechanicalAgentControl);
+                    mechanicalAgentControl.writeMechanicalInfo(fs);
+
+                    if(!activeControlPanel.Contains(riskAnalysisControl))
+                        activeControlPanel.Controls.Add(riskAnalysisControl);
+                    riskAnalysisControl.writeRisksInfo(fs);
+
+                    if(!activeControlPanel.Contains(conclusionControl))
+                        activeControlPanel.Controls.Add(conclusionControl);
+                    conclusionControl.writeConclusionInfo(fs);  
+                }
+
+
+
+                    
+                    MessageBox.Show("Progresso salvo com sucesso!");
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            saveProgress();
         }
     }
 }

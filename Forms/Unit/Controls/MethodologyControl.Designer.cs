@@ -76,8 +76,10 @@ namespace RyskTech.Forms.Unit.Controls
             // 
             // MethodologyTextBox
             // 
+            this.MethodologyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mainTableLayoutPanel.SetColumnSpan(this.MethodologyTextBox, 2);
-            this.MethodologyTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MethodologyTextBox.Location = new System.Drawing.Point(5, 74);
             this.MethodologyTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.MethodologyTextBox.Multiline = true;
@@ -140,12 +142,12 @@ namespace RyskTech.Forms.Unit.Controls
             this.showTable1Button.UseVisualStyleBackColor = true;
             this.showTable1Button.Click += new System.EventHandler(this.showTable1Button_Click);
             // 
-            // TestMethodologyControl
+            // MethodologyControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.mainTableLayoutPanel);
-            this.Name = "TestMethodologyControl";
+            this.Name = "MethodologyControl";
             this.Size = new System.Drawing.Size(596, 467);
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.mainTableLayoutPanel.PerformLayout();

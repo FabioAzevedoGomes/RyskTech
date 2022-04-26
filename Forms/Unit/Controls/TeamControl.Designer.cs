@@ -105,9 +105,9 @@ namespace RyskTech.Forms.Unit.Controls
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Location = new System.Drawing.Point(309, 228);
+            this.groupBox1.Location = new System.Drawing.Point(309, 259);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(251, 157);
+            this.groupBox1.Size = new System.Drawing.Size(251, 255);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Contato da Unidade";
@@ -166,9 +166,9 @@ namespace RyskTech.Forms.Unit.Controls
             // compositionGroupBox
             // 
             this.compositionGroupBox.Controls.Add(this.panel3);
-            this.compositionGroupBox.Location = new System.Drawing.Point(309, 45);
+            this.compositionGroupBox.Location = new System.Drawing.Point(312, 3);
             this.compositionGroupBox.Name = "compositionGroupBox";
-            this.compositionGroupBox.Size = new System.Drawing.Size(251, 168);
+            this.compositionGroupBox.Size = new System.Drawing.Size(251, 206);
             this.compositionGroupBox.TabIndex = 2;
             this.compositionGroupBox.TabStop = false;
             this.compositionGroupBox.Text = "Composição";
@@ -189,7 +189,7 @@ namespace RyskTech.Forms.Unit.Controls
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 16);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(245, 149);
+            this.panel3.Size = new System.Drawing.Size(245, 187);
             this.panel3.TabIndex = 0;
             // 
             // OtherTextBox
@@ -314,12 +314,13 @@ namespace RyskTech.Forms.Unit.Controls
             // viceDirectorGroupBox
             // 
             this.viceDirectorGroupBox.Controls.Add(this.panel2);
-            this.viceDirectorGroupBox.Location = new System.Drawing.Point(17, 228);
+            this.viceDirectorGroupBox.Location = new System.Drawing.Point(6, 256);
             this.viceDirectorGroupBox.Name = "viceDirectorGroupBox";
-            this.viceDirectorGroupBox.Size = new System.Drawing.Size(283, 170);
+            this.viceDirectorGroupBox.Size = new System.Drawing.Size(283, 258);
             this.viceDirectorGroupBox.TabIndex = 1;
             this.viceDirectorGroupBox.TabStop = false;
-            this.viceDirectorGroupBox.Text = "Responsável";
+            this.viceDirectorGroupBox.Text = "Vice-Responsável";
+            this.viceDirectorGroupBox.Enter += new System.EventHandler(this.viceDirectorGroupBox_Enter);
             // 
             // panel2
             // 
@@ -334,7 +335,7 @@ namespace RyskTech.Forms.Unit.Controls
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 16);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(277, 151);
+            this.panel2.Size = new System.Drawing.Size(277, 239);
             this.panel2.TabIndex = 1;
             // 
             // label15
@@ -408,9 +409,9 @@ namespace RyskTech.Forms.Unit.Controls
             // directorGroupBox
             // 
             this.directorGroupBox.Controls.Add(this.panel1);
-            this.directorGroupBox.Location = new System.Drawing.Point(14, 45);
+            this.directorGroupBox.Location = new System.Drawing.Point(3, 3);
             this.directorGroupBox.Name = "directorGroupBox";
-            this.directorGroupBox.Size = new System.Drawing.Size(286, 168);
+            this.directorGroupBox.Size = new System.Drawing.Size(286, 209);
             this.directorGroupBox.TabIndex = 0;
             this.directorGroupBox.TabStop = false;
             this.directorGroupBox.Text = "Responsável";
@@ -428,7 +429,7 @@ namespace RyskTech.Forms.Unit.Controls
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(280, 149);
+            this.panel1.Size = new System.Drawing.Size(280, 190);
             this.panel1.TabIndex = 0;
             // 
             // label14

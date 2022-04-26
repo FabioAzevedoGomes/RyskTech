@@ -11,6 +11,7 @@ namespace RyskTech.Forms.Lab.Controls
         public LabWelcomeControl()
         {
             InitializeComponent();
+            
         }
 
         private void LabWelcomeControlBetter_Load(object sender, EventArgs e)
@@ -49,6 +50,63 @@ namespace RyskTech.Forms.Lab.Controls
                 data.CheckValidity();
             else
                 throw new ApplicationException(Resources.Language.pt_local.NotAllTabsVisited);
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            data.date = dateTimePicker2.Value;
+        }
+
+        public void writeWelcomeInfo(System.IO.FileStream fs)
+        {
+            LabMainForm.AddText(fs, "<LabWelcome>\n");
+            LabMainForm.AddText(fs, this.data.belongingUnitName + '\n');
+            LabMainForm.AddText(fs, this.data.labName + '\n');
+            if (this.data.manipulatesChemicalAgents)
+                LabMainForm.AddText(fs, "chemical,");
+            if (this.data.manipulatesBiologicalAgents)
+                LabMainForm.AddText(fs, "biological,");
+            if (this.data.manipulatesPhysicalAgents)
+                LabMainForm.AddText(fs, "physical");
+            LabMainForm.AddText(fs, "\n");
+            LabMainForm.AddText(fs, this.data.date.ToLongDateString() + '\n');
+            LabMainForm.AddText(fs, "<\\LabWelcome>\n");
+        }
+
+        public void loadWelcomeInfo(string path)
+        {
+            using(System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+                 string line = sr.ReadLine();
+               this.unitNameTextBox.Text = sr.ReadLine();
+               this.labNameTextBox.Text = sr.ReadLine();
+                line = sr.ReadLine();
+                if(line.Contains("chemical"))
+                    chemicalAgentsUsedCheckBox.Checked = true;
+                if(line.Contains("biological"))
+                    biologicalAgentsUsedCheckBox.Checked = true;
+                if(line.Contains("physical"))
+                    physicalAgentsUsedCheckBox.Checked = true;
+
+                DateTime dateValue = Convert.ToDateTime(sr.ReadLine());
+                if(dateValue == DateTime.MinValue)
+                    dateValue = DateTime.Now;
+                this.dateTimePicker2.Value = dateValue;
+
+                if (sr.ReadLine() == "<\\LabWelcome>")
+                    sr.Close(); 
+            }
+
         }
     }
 }

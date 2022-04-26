@@ -196,7 +196,7 @@
     <value>Por favor indique os usos do seu agente</value>
   </data>
   <data name="ErrorNoAssociatedDanger" xml:space="preserve">
-    <value>Por favor insira o perigo assocaido a todos os riscos</value>
+    <value>Por favor insira o perigo associado a todos os riscos</value>
   </data>
   <data name="ErrorNoBiologicalAgents" xml:space="preserve">
     <value>Por favor indique os agentes biológicos presentes em seu laboratório</value>

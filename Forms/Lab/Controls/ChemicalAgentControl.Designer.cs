@@ -43,6 +43,7 @@ namespace RyskTech.Forms.Lab.Controls
             this.nbrLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.residuosCheckbox = new System.Windows.Forms.CheckBox();
             this.editResidueButton = new System.Windows.Forms.Button();
             this.editReactorButton = new System.Windows.Forms.Button();
             this.removeReactorButton = new System.Windows.Forms.Button();
@@ -102,6 +103,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(19, 383);
             this.label7.Name = "label7";
@@ -111,6 +113,8 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Location = new System.Drawing.Point(21, 399);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -121,6 +125,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // tableLayoutPanel4
             // 
+            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -161,6 +166,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.yesRadioButton);
             this.panel1.Controls.Add(this.noRadioButton);
             this.panel1.Location = new System.Drawing.Point(21, 304);
@@ -194,6 +200,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(374, 333);
             this.linkLabel1.Name = "linkLabel1";
@@ -206,6 +213,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(15, 333);
             this.label5.Name = "label5";
@@ -215,6 +223,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // nbrLinkLabel
             // 
+            this.nbrLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nbrLinkLabel.AutoSize = true;
             this.nbrLinkLabel.Location = new System.Drawing.Point(314, 288);
             this.nbrLinkLabel.Margin = new System.Windows.Forms.Padding(1);
@@ -228,6 +237,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(15, 288);
             this.label4.Name = "label4";
@@ -237,6 +247,10 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.residuosCheckbox);
             this.groupBox1.Controls.Add(this.editResidueButton);
             this.groupBox1.Controls.Add(this.editReactorButton);
             this.groupBox1.Controls.Add(this.removeReactorButton);
@@ -254,20 +268,37 @@ namespace RyskTech.Forms.Lab.Controls
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agentes";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBox1.Resize += new System.EventHandler(this.resized);
+            // 
+            // residuosCheckbox
+            // 
+            this.residuosCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.residuosCheckbox.AutoSize = true;
+            this.residuosCheckbox.Location = new System.Drawing.Point(267, 253);
+            this.residuosCheckbox.Name = "residuosCheckbox";
+            this.residuosCheckbox.Size = new System.Drawing.Size(78, 17);
+            this.residuosCheckbox.TabIndex = 9;
+            this.residuosCheckbox.Text = "Resíduos?";
+            this.residuosCheckbox.UseVisualStyleBackColor = true;
+            this.residuosCheckbox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // editResidueButton
             // 
-            this.editResidueButton.Location = new System.Drawing.Point(370, 246);
+            this.editResidueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.editResidueButton.Location = new System.Drawing.Point(430, 247);
             this.editResidueButton.Margin = new System.Windows.Forms.Padding(8);
             this.editResidueButton.Name = "editResidueButton";
             this.editResidueButton.Size = new System.Drawing.Size(68, 27);
             this.editResidueButton.TabIndex = 8;
             this.editResidueButton.Text = "Editar";
             this.editResidueButton.UseVisualStyleBackColor = true;
+            this.editResidueButton.Visible = false;
             this.editResidueButton.Click += new System.EventHandler(this.editResidueButton_Click);
             // 
             // editReactorButton
             // 
+            this.editReactorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.editReactorButton.Location = new System.Drawing.Point(93, 246);
             this.editReactorButton.Margin = new System.Windows.Forms.Padding(8);
             this.editReactorButton.Name = "editReactorButton";
@@ -279,6 +310,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // removeReactorButton
             // 
+            this.removeReactorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.removeReactorButton.Location = new System.Drawing.Point(177, 246);
             this.removeReactorButton.Margin = new System.Windows.Forms.Padding(8);
             this.removeReactorButton.Name = "removeReactorButton";
@@ -290,6 +322,7 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // addReactorButton
             // 
+            this.addReactorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addReactorButton.Location = new System.Drawing.Point(9, 246);
             this.addReactorButton.Margin = new System.Windows.Forms.Padding(8);
             this.addReactorButton.Name = "addReactorButton";
@@ -301,30 +334,37 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // removeResidueButton
             // 
-            this.removeResidueButton.Location = new System.Drawing.Point(454, 246);
+            this.removeResidueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeResidueButton.Location = new System.Drawing.Point(498, 246);
             this.removeResidueButton.Margin = new System.Windows.Forms.Padding(8);
             this.removeResidueButton.Name = "removeResidueButton";
             this.removeResidueButton.Size = new System.Drawing.Size(68, 27);
             this.removeResidueButton.TabIndex = 6;
             this.removeResidueButton.Text = "Remover";
             this.removeResidueButton.UseVisualStyleBackColor = true;
+            this.removeResidueButton.Visible = false;
             this.removeResidueButton.Click += new System.EventHandler(this.removeResidueButton_Click);
             // 
             // addResidueButton
             // 
-            this.addResidueButton.Location = new System.Drawing.Point(286, 246);
+            this.addResidueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addResidueButton.Location = new System.Drawing.Point(356, 246);
             this.addResidueButton.Margin = new System.Windows.Forms.Padding(8);
             this.addResidueButton.Name = "addResidueButton";
             this.addResidueButton.Size = new System.Drawing.Size(68, 27);
             this.addResidueButton.TabIndex = 5;
             this.addResidueButton.Text = "Novo";
             this.addResidueButton.UseVisualStyleBackColor = true;
+            this.addResidueButton.Visible = false;
             this.addResidueButton.Click += new System.EventHandler(this.addResidueButton_Click);
             // 
             // chemicalReactorData
             // 
             this.chemicalReactorData.AllowUserToAddRows = false;
             this.chemicalReactorData.AllowUserToDeleteRows = false;
+            this.chemicalReactorData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chemicalReactorData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.chemicalReactorData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -339,11 +379,13 @@ namespace RyskTech.Forms.Lab.Controls
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10});
             this.chemicalReactorData.Location = new System.Drawing.Point(9, 75);
+            this.chemicalReactorData.MinimumSize = new System.Drawing.Size(282, 0);
             this.chemicalReactorData.Name = "chemicalReactorData";
             this.chemicalReactorData.ReadOnly = true;
             this.chemicalReactorData.ShowCellToolTips = false;
-            this.chemicalReactorData.Size = new System.Drawing.Size(252, 161);
+            this.chemicalReactorData.Size = new System.Drawing.Size(557, 161);
             this.chemicalReactorData.TabIndex = 4;
+            this.chemicalReactorData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.chemicalReactorData_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -415,6 +457,9 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             this.chemicalResidueData.AllowUserToAddRows = false;
             this.chemicalResidueData.AllowUserToDeleteRows = false;
+            this.chemicalResidueData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chemicalResidueData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.chemicalResidueData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chemicalResidueName,
@@ -427,11 +472,12 @@ namespace RyskTech.Forms.Lab.Controls
             this.inertState,
             this.chemicalResidueStorageLocation,
             this.chemicalResidueContainer});
-            this.chemicalResidueData.Location = new System.Drawing.Point(284, 75);
+            this.chemicalResidueData.Location = new System.Drawing.Point(297, 75);
             this.chemicalResidueData.Name = "chemicalResidueData";
             this.chemicalResidueData.ReadOnly = true;
             this.chemicalResidueData.Size = new System.Drawing.Size(269, 161);
             this.chemicalResidueData.TabIndex = 3;
+            this.chemicalResidueData.Visible = false;
             // 
             // chemicalResidueName
             // 
@@ -495,12 +541,14 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(281, 59);
+            this.label3.Location = new System.Drawing.Point(302, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Resíduos";
+            this.label3.Visible = false;
             // 
             // label2
             // 
@@ -592,5 +640,6 @@ namespace RyskTech.Forms.Lab.Controls
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button editReactorButton;
         private System.Windows.Forms.Button editResidueButton;
+        private System.Windows.Forms.CheckBox residuosCheckbox;
     }
 }

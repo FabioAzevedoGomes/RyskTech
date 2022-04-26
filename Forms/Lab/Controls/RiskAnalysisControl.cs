@@ -35,7 +35,7 @@ namespace RyskTech.Forms.Lab.Controls
                 Risk risk = new Risk(
                     row.Cells[0].Value.ToString(),
                     row.Cells[1].Value.ToString(),
-                    row.Cells[2].Value.ToString(),
+                    row.Cells[2].Value == null ? "" : row.Cells[2].Value.ToString(),
                     row.Cells[3].Value == null ? "" : row.Cells[3].Value.ToString(),
                     row.Cells[4].Value == null ? "" : row.Cells[4].Value.ToString());
 
@@ -99,6 +99,69 @@ namespace RyskTech.Forms.Lab.Controls
         {
             if (data != null)
                 CreateRiskList();
+        }
+
+        public void writeRisksInfo(System.IO.FileStream fs)
+        {
+            CreateRiskList();
+            LabMainForm.AddText(fs, "<labRisksInfo>\n");
+            if (this.data.Count > 0)
+            {
+                LabMainForm.AddText(fs, "RISCOS\n");
+
+                foreach (Risk risk in this.data)
+                {
+                    LabMainForm.AddText(fs, risk.description + '£');
+                    LabMainForm.AddText(fs, risk.associatedDanger + '£');
+                    LabMainForm.AddText(fs, risk.safetyNet.Replace("\n", "###") + '£');
+                    LabMainForm.AddText(fs, risk.frequencyClassification + '£');
+                    LabMainForm.AddText(fs, risk.severityClassification + '£');
+                    LabMainForm.AddText(fs, risk.riskClassification.ToString() + '£' + '\n');
+
+                }
+
+
+            }
+            else { LabMainForm.AddText(fs, "SEM RISCOS\n"); }
+
+            LabMainForm.AddText(fs, "<\\labRisksInfo>\n");
+        }
+
+        private void parseRisks(string line)
+        {
+            string[] information = line.Split('£');
+            Risk newRisk = new Risk();
+            newRisk.description = information[0];
+            newRisk.associatedDanger = information[1];
+            newRisk.safetyNet = information[2].Replace("###", "\n");
+            newRisk.frequencyClassification = information[3];
+            newRisk.severityClassification = information[4];
+            newRisk.riskClassification = Convert.ToInt16(information[5]);
+            AddAgentDataToTable(newRisk);
+            
+        }
+
+        public void loadRiskInfo(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<labRisksInfo>");
+                line = sr.ReadLine();
+                if (line == "RISCOS")
+                {
+                    line = sr.ReadLine();
+                    while (line != "<\\labRisksInfo>")
+                    {
+                        parseRisks(line);
+                        line = sr.ReadLine();
+                    }
+                    sr.Close();
+                }
+                else sr.Close();
+
+            }
         }
     }
 }

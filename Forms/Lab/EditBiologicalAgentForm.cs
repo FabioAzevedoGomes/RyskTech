@@ -14,8 +14,33 @@ namespace RyskTech.Forms.Lab
 
             if (agent != null)
             {
+
+                string[] usage = agent.usageScenarios.Split('\n');
+
                 agentNameTextBox.Text = agent.name;
                 riskClassificationTextBox.Text = agent.riskClassification;
+                if (usage != null)
+                {
+                    foreach (string s in usage)
+                    {
+                        if (s == "Ensino")
+                        {
+                            teachingCheckBox.Checked = true;
+                        }
+                        if (s == "Pesquisa")
+                        {
+                            researchCheckBox.Checked = true;
+                        }
+                        if (s == "Extensão")
+                        {
+                            extensionCheckBox.Checked = true;
+                        }
+                        if (s == "Processo Produtivo")
+                        {
+                            productiveProcessCheckBox.Checked = true;
+                        }
+                    }
+                }
             }
         }
 

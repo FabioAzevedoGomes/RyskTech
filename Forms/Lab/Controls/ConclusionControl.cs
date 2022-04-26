@@ -44,5 +44,30 @@ namespace RyskTech.Forms.Lab.Controls
             if (recomendation == null || recomendation.Length <= 0)
                 throw new ApplicationException(Resources.Language.pt_local.ErrorNoSugestions);
         }
+
+        public void writeConclusionInfo(System.IO.FileStream fs)
+        {
+            LabMainForm.AddText(fs, "<labConclusion>\n");
+            LabMainForm.AddText(fs, accidentHistory.Replace("\r\n", "£££") + "╞");
+            LabMainForm.AddText(fs, conclusion.Replace("\r\n", "£££") + "╞");
+            LabMainForm.AddText(fs, recomendation.Replace("\r\n", "£££"));
+            LabMainForm.AddText(fs, "\n<\\labConclusion>");
+        }
+
+        public void loadConclusionInfo(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<labConclusion>");
+                line = sr.ReadLine();
+                string[] parseString = line.Split('╞');
+                this.accidentHistoryTextBox.Text = parseString[0].Replace("£££", "\r\n");
+                this.conclusionTextBox.Text = parseString[1].Replace("£££", "\r\n");
+                this.recomendationTextBox.Text = parseString[2].Replace("£££", "\r\n");
+
+                sr.Close();
+            }
+        }
     }
 }

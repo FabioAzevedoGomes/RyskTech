@@ -40,6 +40,82 @@ namespace RyskTech.Forms.Lab
 
             if (agent != null)
             {
+                string[] origins = agent.origin.Split('\n');
+                string[] dangers = agent.dangerCharacteristics.Split('\n');
+                string[] containers = agent.container.Split('\n');
+
+                if(origins != null) //Se as boxes  de  uso estiverem marcadas, marca  elas na hora  de edição
+                {
+                    foreach (string s in origins)
+                    {
+                        if(s == "Ensino")
+                        {
+                            originCheckedListBox.SetItemChecked(0,true);
+                        }
+                        if(s == "Pesquisa")
+                        {
+                            originCheckedListBox.SetItemChecked(1, true);
+                        }
+                        if(s == "Extensão")
+                        {
+                            originCheckedListBox.SetItemChecked(2, true);
+                        }
+                        if(s == "Processo Produtivo")
+                        {
+                            originCheckedListBox.SetItemChecked(3, true);
+                        }
+                    }
+                }
+
+                if(dangers != null)
+                {
+                    foreach (string s in dangers)
+                    {
+                        if(s == "Inflamável")
+                        {
+                            dangerCharacteristicsListBox.SetItemChecked(0,true);
+                        }
+                        if (s == "Corrosivo")
+                        {
+                            dangerCharacteristicsListBox.SetItemChecked(1, true);
+                        }
+                        if (s == "Tóxico")
+                        {
+                            dangerCharacteristicsListBox.SetItemChecked(2, true);
+                        }
+                        if (s == "Reativo")
+                        {
+                            dangerCharacteristicsListBox.SetItemChecked(3, true);
+                        }
+                    }
+                }
+
+                if(containers != null)
+                {
+                    foreach(string s in containers)
+                    {
+                        if(s == "Vidro temperado transparente")
+                        {
+                            transparentGlassRadioButton.Checked = true;
+                        }
+                        if( s == "Vidro temperado âmbar")
+                        {
+                            amberGlassRadioButton.Checked = true;
+                        }
+                        if ( s == "Bombona plástica")
+                        {
+                            plasticRadioButton.Checked = true;
+                        }
+                        if ( s == "Outro")
+                        {
+                            otherRadioButton.Checked = true;
+                        }
+                    }
+                }
+
+
+                
+
                 residueNameTextBox.Text = agent.name;
                 physicalStateComboBox.Text = agent.physicalState;
                 quantityUpDown.Value = (decimal)agent.quantity;
@@ -49,9 +125,11 @@ namespace RyskTech.Forms.Lab
                     inertRadioButton.Checked = true;
                 else
                     activeRadioButton.Checked = true;
+                
                 isDangerousCheckBox.Checked = agent.dangerCharacteristics.Length > 0;
                 storageLocationTextBox.Text = agent.storageDetails;
-                if (agent.mixtureDescription == null || agent.mixtureDescription.Length <= 0)
+
+                if (agent.mixtureDescription == "Pura")
                 {
                     pureRadioButton.Checked = true;
                     mixedRadioButton.Checked = false;
@@ -84,6 +162,8 @@ namespace RyskTech.Forms.Lab
                 container += Resources.Language.pt_local.AmberGlassContainer + "\n";
             if (plasticRadioButton.Checked)
                 container += Resources.Language.pt_local.PlasticContainer + "\n";
+            if (otherRadioButton.Checked)
+                container += "Outro" + "\n";
 
             string origins = "";
             foreach (string item in originCheckedListBox.CheckedItems)
@@ -166,6 +246,21 @@ namespace RyskTech.Forms.Lab
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void originCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void transparentGlassRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void amberGlassRadioButton_CheckedChanged(object sender, EventArgs e)
         {
 
         }

@@ -70,7 +70,7 @@ namespace RyskTech
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.44701F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.55299F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
             this.tableLayoutPanel1.Controls.Add(this.cancelButton, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.concludeButton, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.residueNameLabel, 0, 0);
@@ -91,7 +91,7 @@ namespace RyskTech
             this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cancelButton.Location = new System.Drawing.Point(302, 420);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(126, 35);
+            this.cancelButton.Size = new System.Drawing.Size(125, 35);
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Cancelar";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -100,9 +100,9 @@ namespace RyskTech
             // concludeButton
             // 
             this.concludeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.concludeButton.Location = new System.Drawing.Point(434, 420);
+            this.concludeButton.Location = new System.Drawing.Point(433, 420);
             this.concludeButton.Name = "concludeButton";
-            this.concludeButton.Size = new System.Drawing.Size(138, 35);
+            this.concludeButton.Size = new System.Drawing.Size(139, 35);
             this.concludeButton.TabIndex = 1;
             this.concludeButton.Text = "Concluir";
             this.concludeButton.UseVisualStyleBackColor = true;
@@ -126,7 +126,7 @@ namespace RyskTech
             this.residueNameTextBox.Location = new System.Drawing.Point(109, 12);
             this.residueNameTextBox.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.residueNameTextBox.Name = "residueNameTextBox";
-            this.residueNameTextBox.Size = new System.Drawing.Size(319, 20);
+            this.residueNameTextBox.Size = new System.Drawing.Size(318, 20);
             this.residueNameTextBox.TabIndex = 3;
             // 
             // residueInfoGroupBox
@@ -147,7 +147,7 @@ namespace RyskTech
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.92308F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.5F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.physicalStateComboBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
@@ -205,7 +205,7 @@ namespace RyskTech
             this.physicalStateComboBox.Location = new System.Drawing.Point(97, 7);
             this.physicalStateComboBox.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.physicalStateComboBox.Name = "physicalStateComboBox";
-            this.physicalStateComboBox.Size = new System.Drawing.Size(180, 21);
+            this.physicalStateComboBox.Size = new System.Drawing.Size(179, 21);
             this.physicalStateComboBox.TabIndex = 1;
             // 
             // label2
@@ -231,7 +231,7 @@ namespace RyskTech
             0,
             0});
             this.quantityUpDown.Name = "quantityUpDown";
-            this.quantityUpDown.Size = new System.Drawing.Size(83, 20);
+            this.quantityUpDown.Size = new System.Drawing.Size(82, 20);
             this.quantityUpDown.TabIndex = 3;
             // 
             // measurementUnitComboBox
@@ -245,7 +245,7 @@ namespace RyskTech
             "g",
             "Kg",
             "m³"});
-            this.measurementUnitComboBox.Location = new System.Drawing.Point(186, 58);
+            this.measurementUnitComboBox.Location = new System.Drawing.Point(185, 58);
             this.measurementUnitComboBox.Name = "measurementUnitComboBox";
             this.measurementUnitComboBox.Size = new System.Drawing.Size(91, 21);
             this.measurementUnitComboBox.TabIndex = 4;
@@ -258,7 +258,7 @@ namespace RyskTech
             this.label3.Location = new System.Drawing.Point(5, 102);
             this.label3.Margin = new System.Windows.Forms.Padding(5);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 13);
+            this.label3.Size = new System.Drawing.Size(172, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Uso";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -275,7 +275,7 @@ namespace RyskTech
             "Processo Produtivo"});
             this.originCheckedListBox.Location = new System.Drawing.Point(3, 123);
             this.originCheckedListBox.Name = "originCheckedListBox";
-            this.originCheckedListBox.Size = new System.Drawing.Size(177, 94);
+            this.originCheckedListBox.Size = new System.Drawing.Size(176, 94);
             this.originCheckedListBox.TabIndex = 6;
             // 
             // label4
@@ -283,9 +283,9 @@ namespace RyskTech
             this.label4.AutoSize = true;
             this.tableLayoutPanel2.SetColumnSpan(this.label4, 2);
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(283, 82);
+            this.label4.Location = new System.Drawing.Point(282, 82);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(277, 38);
+            this.label4.Size = new System.Drawing.Size(278, 38);
             this.label4.TabIndex = 8;
             this.label4.Text = "Características de periculosidade";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -300,9 +300,9 @@ namespace RyskTech
             "Corrosivo",
             "Tóxico",
             "Reativo"});
-            this.dangerCharacteristicsListBox.Location = new System.Drawing.Point(283, 123);
+            this.dangerCharacteristicsListBox.Location = new System.Drawing.Point(282, 123);
             this.dangerCharacteristicsListBox.Name = "dangerCharacteristicsListBox";
-            this.dangerCharacteristicsListBox.Size = new System.Drawing.Size(277, 94);
+            this.dangerCharacteristicsListBox.Size = new System.Drawing.Size(278, 94);
             this.dangerCharacteristicsListBox.TabIndex = 9;
             // 
             // storageLocationTextBox
@@ -319,7 +319,7 @@ namespace RyskTech
             // 
             this.isDangerousCheckBox.AutoSize = true;
             this.isDangerousCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.isDangerousCheckBox.Location = new System.Drawing.Point(186, 123);
+            this.isDangerousCheckBox.Location = new System.Drawing.Point(185, 123);
             this.isDangerousCheckBox.Name = "isDangerousCheckBox";
             this.isDangerousCheckBox.Size = new System.Drawing.Size(91, 94);
             this.isDangerousCheckBox.TabIndex = 16;
@@ -333,9 +333,9 @@ namespace RyskTech
             this.panel1.Controls.Add(this.activeRadioButton);
             this.panel1.Controls.Add(this.inertRadioButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(283, 3);
+            this.panel1.Location = new System.Drawing.Point(282, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(277, 34);
+            this.panel1.Size = new System.Drawing.Size(278, 34);
             this.panel1.TabIndex = 17;
             // 
             // activeRadioButton
@@ -392,7 +392,7 @@ namespace RyskTech
             this.transparentGlassRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.transparentGlassRadioButton.Location = new System.Drawing.Point(97, 223);
             this.transparentGlassRadioButton.Name = "transparentGlassRadioButton";
-            this.transparentGlassRadioButton.Size = new System.Drawing.Size(83, 64);
+            this.transparentGlassRadioButton.Size = new System.Drawing.Size(82, 64);
             this.transparentGlassRadioButton.TabIndex = 19;
             this.transparentGlassRadioButton.Text = "Vidro trasparente";
             this.transparentGlassRadioButton.UseVisualStyleBackColor = true;
@@ -401,7 +401,7 @@ namespace RyskTech
             // 
             this.amberGlassRadioButton.AutoSize = true;
             this.amberGlassRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.amberGlassRadioButton.Location = new System.Drawing.Point(186, 223);
+            this.amberGlassRadioButton.Location = new System.Drawing.Point(185, 223);
             this.amberGlassRadioButton.Name = "amberGlassRadioButton";
             this.amberGlassRadioButton.Size = new System.Drawing.Size(91, 64);
             this.amberGlassRadioButton.TabIndex = 20;
@@ -412,9 +412,9 @@ namespace RyskTech
             // 
             this.plasticRadioButton.AutoSize = true;
             this.plasticRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plasticRadioButton.Location = new System.Drawing.Point(283, 223);
+            this.plasticRadioButton.Location = new System.Drawing.Point(282, 223);
             this.plasticRadioButton.Name = "plasticRadioButton";
-            this.plasticRadioButton.Size = new System.Drawing.Size(71, 64);
+            this.plasticRadioButton.Size = new System.Drawing.Size(70, 64);
             this.plasticRadioButton.TabIndex = 21;
             this.plasticRadioButton.Text = "Bombona plástica";
             this.plasticRadioButton.UseVisualStyleBackColor = true;
@@ -423,9 +423,9 @@ namespace RyskTech
             // 
             this.otherRadioButton.AutoSize = true;
             this.otherRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.otherRadioButton.Location = new System.Drawing.Point(360, 223);
+            this.otherRadioButton.Location = new System.Drawing.Point(358, 223);
             this.otherRadioButton.Name = "otherRadioButton";
-            this.otherRadioButton.Size = new System.Drawing.Size(200, 64);
+            this.otherRadioButton.Size = new System.Drawing.Size(202, 64);
             this.otherRadioButton.TabIndex = 22;
             this.otherRadioButton.Text = "Outro";
             this.otherRadioButton.UseVisualStyleBackColor = true;

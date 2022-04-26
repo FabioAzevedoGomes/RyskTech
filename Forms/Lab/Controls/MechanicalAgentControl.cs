@@ -94,5 +94,58 @@ namespace RyskTech.Forms.Lab.Controls
 
             CreateMechanicalAgentList();
         }
+
+        public void writeMechanicalInfo(System.IO.FileStream fs)
+        {
+            CreateMechanicalAgentList();
+            LabMainForm.AddText(fs, "<labMechanicalInfo>\n");
+            if (this.mechanicalAgentList.Count > 0)
+            {
+                LabMainForm.AddText(fs, "AGENTES\n");
+
+                foreach (MechanicalAgent mech in this.mechanicalAgentList)
+                {
+                    LabMainForm.AddText(fs, mech.name + '£');
+                    LabMainForm.AddText(fs, mech.associatedRisk + '£');
+                    LabMainForm.AddText(fs, mech.additionalInfo.Replace("\r\n", "$#$" ) + '\n');
+                }
+
+
+            }
+            else { LabMainForm.AddText(fs, "SEM AGENTES\n"); }
+
+            LabMainForm.AddText(fs, "<\\labMechanicalInfo>\n");
+        }
+        private void parseMechAgent(string line)
+        {
+            string[] information = line.Split('£');
+            MechanicalAgent mech = new MechanicalAgent();
+            mech.name = information[0];
+            mech.associatedRisk = information[1];
+            mech.additionalInfo = information[2].Replace("$#$", "\r\n");
+            AddAgentDataToTable(mech);
+        }
+        public void loadMechanicalInfo(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<labMechanicalInfo>");
+                line = sr.ReadLine();
+                if (line == "AGENTES")
+                {
+                    line = sr.ReadLine();
+                    while (line != "<\\labMechanicalInfo>")
+                    {
+                        parseMechAgent(line);
+                        line = sr.ReadLine();
+                    }
+                    sr.Close();
+                }
+                else sr.Close();
+
+            }
+        }
     }
 }

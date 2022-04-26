@@ -13,6 +13,43 @@ namespace RyskTech.Forms.Unit
             InitializeComponent();
             if (space != null)
             {
+                string[] weekdays = space.weekDays.Split('\n');
+
+                if(weekdays != null)
+                {
+                    foreach (string weekday in weekdays)
+                    {
+                        if(weekday == "Segunda-Feira")
+                        {
+                            checkBox1.Checked = true;
+                        }
+                        if (weekday == "Terça-Feira")
+                        {
+                            checkBox2.Checked = true;
+                        }
+                        if (weekday == "Quarta-Feira")
+                        {
+                            checkBox3.Checked = true;
+                        }
+                        if (weekday == "Quinta-Feira")
+                        {
+                            checkBox4.Checked = true;
+                        }
+                        if (weekday == "Sexta-Feira")
+                        {
+                            checkBox5.Checked = true;
+                        }
+                        if (weekday == "Sábado")
+                        {
+                            checkBox6.Checked = true;
+                        }
+                        if (weekday == "Domingo")
+                        {
+                            checkBox7.Checked = true;
+                        }
+                    }
+                }
+
                 buildingTextBox.Text = space.buildingIdentifier;
                 roomTextBox.Text = space.roomIdentifier;
                 floorTextBox.Text = space.floorIdentifier;

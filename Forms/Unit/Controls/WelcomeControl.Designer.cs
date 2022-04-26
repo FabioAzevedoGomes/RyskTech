@@ -37,6 +37,8 @@ namespace RyskTech.Forms.Unit.Controls
             this.generalInfotableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.unitNameLabel = new System.Windows.Forms.Label();
             this.unitNameTextBox = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -108,6 +110,8 @@ namespace RyskTech.Forms.Unit.Controls
             this.generalInfotableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.generalInfotableLayoutPanel.Controls.Add(this.unitNameLabel, 0, 0);
             this.generalInfotableLayoutPanel.Controls.Add(this.unitNameTextBox, 1, 0);
+            this.generalInfotableLayoutPanel.Controls.Add(this.dateTimePicker1, 1, 1);
+            this.generalInfotableLayoutPanel.Controls.Add(this.label2, 0, 1);
             this.generalInfotableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.generalInfotableLayoutPanel.Location = new System.Drawing.Point(3, 16);
             this.generalInfotableLayoutPanel.Name = "generalInfotableLayoutPanel";
@@ -138,6 +142,26 @@ namespace RyskTech.Forms.Unit.Controls
             this.unitNameTextBox.TabIndex = 1;
             this.unitNameTextBox.TextChanged += new System.EventHandler(this.unitNameTextBox_TextChanged);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(175, 62);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(66, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Data";
+            // 
             // WelcomeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,5 +189,7 @@ namespace RyskTech.Forms.Unit.Controls
         private System.Windows.Forms.TableLayoutPanel generalInfotableLayoutPanel;
         private System.Windows.Forms.Label unitNameLabel;
         private System.Windows.Forms.TextBox unitNameTextBox;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label2;
     }
 }

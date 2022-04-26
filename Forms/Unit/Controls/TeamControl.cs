@@ -114,5 +114,73 @@ namespace RyskTech.Forms.Unit.Controls
         {
             data.viceDirector.occupation = viceOccupationTextBox.Text;
         }
+
+        public void writeTeamInformation(System.IO.FileStream fs)
+        {
+            UnitMainForm.AddText(fs, "<unitTeam>\n");
+            UnitMainForm.AddText(fs,
+                directorOccupationTextBox.Text + '£'
+                + DirectorNameTextBox.Text + '£'
+                + DirectorEmailTextBox.Text + '£'
+                + DirectorPhoneTextBox.Text + '\n');
+            UnitMainForm.AddText(fs,
+                viceOccupationTextBox.Text + '£'
+                + ViceNameTextBox.Text + '£'
+                + ViceEmailTextBox.Text + '£'
+                + VicePhoneTextBox.Text + '\n');
+            UnitMainForm.AddText(fs,
+                TeachersNumericUpDown.Value.ToString() + '£'
+                + ProfessionalNumericUpDown.Value.ToString() + '£'
+                + StudentsNumericUpDown.Value.ToString() + '£'
+                + PublicNumericUpDown.Value.ToString() + '£'
+                + OtherTextBox.Text + '£'
+                + OtherNumericUpDownCounter.Value.ToString() + '\n');
+            UnitMainForm.AddText(fs,
+                UnitContactTextBox.Text + '£'
+                + textBox2.Text + '£'
+                + textBox3.Text + '\n');
+            UnitMainForm.AddText(fs, "<\\unitTeam>\n");
+        }
+
+        public void loadTeamInfo(string path)
+        {
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(path))
+            {
+                string line;
+                do { line = sr.ReadLine(); } while (line != "<unitTeam>");
+                line = sr.ReadLine();
+                string[] lineParser = line.Split('£');
+                directorOccupationTextBox.Text = lineParser[0];
+                DirectorNameTextBox.Text = lineParser[1];
+                DirectorEmailTextBox.Text = lineParser[2];
+                DirectorPhoneTextBox.Text = lineParser[3];
+                line = sr.ReadLine();
+                lineParser = line.Split('£');
+                viceOccupationTextBox.Text = lineParser[0];
+                ViceNameTextBox.Text = lineParser[1];
+                ViceEmailTextBox.Text = lineParser[2];
+                VicePhoneTextBox.Text = lineParser[3];
+                line = sr.ReadLine();
+                lineParser = line.Split('£');
+                TeachersNumericUpDown.Value = Convert.ToDecimal(lineParser[0]);
+                ProfessionalNumericUpDown.Value = Convert.ToDecimal(lineParser[1]);
+                StudentsNumericUpDown.Value = Convert.ToDecimal(lineParser[2]);
+                PublicNumericUpDown.Value = Convert.ToDecimal(lineParser[3]);
+                OtherTextBox.Text = lineParser[4];
+                OtherNumericUpDownCounter.Value = Convert.ToDecimal(lineParser[5]);
+                line = sr.ReadLine();
+                lineParser = line.Split('£');
+                UnitContactTextBox.Text = lineParser[0];
+                textBox2.Text = lineParser[1];
+                textBox3.Text = lineParser[2];
+                sr.Close();
+
+            }
+        }
+
+        private void viceDirectorGroupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

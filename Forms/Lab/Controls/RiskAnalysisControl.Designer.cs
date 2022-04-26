@@ -120,6 +120,11 @@ namespace RyskTech.Forms.Lab.Controls
             // 
             this.riskDataGridView.AllowUserToAddRows = false;
             this.riskDataGridView.AllowUserToDeleteRows = false;
+            this.riskDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.riskDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.riskDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.riskDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.riskDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.danger,
